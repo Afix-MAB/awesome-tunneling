@@ -1,37 +1,3 @@
-**UPDATE 2026-09-28:** Official policy for adding non-open source/commercial services to the list: you must provide some evidence of existing customers that are happy with your product. Google reviews, 100+ GitHub stars, etc. If you are commercial but primarily B2B, you can also have a reputable business that is a customer send me an email vouching for your product. Decisions will still be case-by-case, but I try to be reasonable.
-
-**UPDATE 2026-08-10:** I did a lot of backlog cleanup over the weekend. I used AI to help with automation and write comments, but I tried to make all the yes/no decisions myself. Some things almost certainly slipped through the cracks. If you feel your issue/PR was closed in error, please comment so I can take a closer look.
-
-**UPDATE 2026-02-16:** Given the sensitive nature of tunneling tools, I'm going to start requiring at least 100 GitHub stars on any new additions. Projects not hosted on GitHub and commercial offerings will be handled case-by-case. Feel free to open an issue if you see a problem with this policy.
-
-# What is this list for
-
-The purpose of this list is to track and compare tunneling solutions. This is
-primarily targeted toward self-hosters and developers who want to do things
-like exposing a local webserver via a public domain name, with automatic HTTPS,
-even if behind a NAT or other restricted network.
-
-<!--**NOTE:** We're building a community around self-hosting, data ownership, and decentralization in general.
-Join us over at [IndieBits.io](https://forum.indiebits.io).-->
-
-# The dream
-
-I started this list because I'm looking for a simple tool/service that does the
-following:
-
-* Allows me to register a domain name and automatically points the records at
-  the server running the tunnels.
-* Automatically sets up and manages HTTPS certificates (apex and subdomains)
-  for the domain.
-* Provides a client tool that tunnels HTTP/TCP connections through the server
-  without requiring root on the client.
-* Provides a simple GUI interface to allow me to map X domain/subdomain to Y port
-  on Z client, and proxy all connections to that domain.
-
-So far I haven't found a tool that does all of this. In particular, while some
-of them can do automatic certs through Let's Encrypt, none of them integrate
-the domain registration and DNS management in a simple way.
-
 # Recommendations
 
 * For most people, I currently recommend [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/). Although it's closed source, this is the production-quality service that gets the closest to achieving the dream. It's also a loss-leader for Cloudflare's other products which means they can offer it for free.
@@ -149,7 +115,6 @@ the domain registration and DNS management in a simple way.
 * [Svix Play](https://www.svix.com/play/) [![Svix GitHub stars badge](https://img.shields.io/github/stars/svix/svix-webhooks?style=flat)](https://github.com/svix/svix-webhooks/stargazers) - Free, no-signup hosted webhook relay and debugger. Its MIT-licensed CLI exposes a local HTTP webhook endpoint at an automatically generated HTTPS URL with `svix listen URL`; intended for development rather than general-purpose production tunneling.
 * [GetPublicIP](https://getpublicip.com/) - Commercial service that routes a dedicated public IPv4/IPv6 address to a server behind NAT over WireGuard, with TCP, UDP, and ICMP support; users manage their own TLS.
 * [SteadIP](https://steadip.com/) - Offers both free and paid tunneling services. SteadIP Anchor gives your tunnel a dedicated IPv4 address, so your endpoint keeps a stable public IP instead of sharing one.
-
 * [ProxyLink](https://proxylink.dev/) - Exposes services behind NAT/CGNAT via HTTP/HTTPS/TCP/UDP links with automatic HTTPS, but the tunnel runs on the router or gateway rather than per-host: one WireGuard peer covers the whole LAN and any additional VLANs, so devices that can't run a client (NVRs, PBXs, managed switches) are reachable without installing anything on them. Also provides browser-based RDP, VNC and SSH sessions to those devices. Aimed at MSPs and IT teams rather than dev tunnels. Closed source, EU-hosted. Free during early access.
 
 # Overlay networks and other advanced tools
